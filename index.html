@@ -7,124 +7,221 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* (Mantenha todos os estilos anteriores) */
-        
-        /* Adicione este novo estilo */
-        .view-switcher {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
-            gap: 10px;
+            align-items: center;
         }
-        
-        .view-switcher button {
-            padding: 8px 16px;
-            background: #f0f0f0;
+
+        /* (Mantenha todos os estilos anteriores do seu CSS) */
+
+        /* Cookie Banner */
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+        #cookie-banner p {
+            margin-bottom: 10px;
+        }
+
+        #cookie-banner a {
+            color: #4af7c5;
+            text-decoration: underline;
+        }
+
+        #accept-cookies {
+            background: #ff0000;
+            color: white;
             border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        #reject-cookies {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 8px 20px;
             border-radius: 5px;
             cursor: pointer;
         }
-        
-        .view-switcher button.active {
-            background: #ff0000;
-            color: white;
+
+        /* Analytics Viewer (para admin) */
+        #analyticsViewer {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 1px solid #e0e6ed;
+        }
+
+        #analyticsViewer h3 {
+            color: #ff0000;
+            margin-bottom: 15px;
+        }
+
+        #analyticsData {
+            display: none;
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            max-height: 300px;
+            overflow-y: auto;
         }
     </style>
 </head>
 <body>
-    <!-- (Mantenha todo o HTML anterior até o tasks-container) -->
-    
-    <div class="tasks-container">
-        <h2>SUAS TAREFAS</h2>
-        <div class="view-switcher">
-            <button id="viewAllBtn" class="active">Todas Tarefas</button>
-            <button id="viewAssignedBtn">Atribuídas a Mim</button>
-        </div>
-        <ul id="taskList" class="task-list">
-            <!-- Tarefas serão inseridas aqui -->
-        </ul>
+    <!-- Cookie Banner -->
+    <div id="cookie-banner">
+        <p>Nós utilizamos cookies para melhorar sua experiência. <a href="/privacidade">Saiba mais</a></p>
+        <button id="accept-cookies">Aceitar</button>
+        <button id="reject-cookies">Recusar</button>
+    </div>
+
+    <div class="container">
+        <!-- (Mantenha todo o HTML existente do seu sistema) -->
     </div>
 
     <script>
-        // (Mantenha todo o código JS anterior até a função renderTasks)
-        
-        // Modifique a função renderTasks para incluir filtro
-        function renderTasks(view = 'all') {
-            if (!currentUser) return;
+        // ================================================
+        // SISTEMA DE GERENCIAMENTO DE TAREFAS (EXISTENTE)
+        // ================================================
+        // (Mantenha todo o código JavaScript existente)
+
+        // ================================================
+        // SISTEMA DE ANALYTICS COM LGPD
+        // ================================================
+        const analyticsEnabled = localStorage.getItem('cookies-accepted') === 'true';
+        const userAnalytics = {
+            pageViews: [],
+            deviceInfo: {},
+            location: null
+        };
+
+        // Mostrar banner de cookies se não tiver resposta
+        if (localStorage.getItem('cookies-accepted') === null) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+
+        // Eventos do banner
+        document.getElementById('accept-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookies-accepted', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+            initAnalytics();
+        });
+
+        document.getElementById('reject-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookies-accepted', 'false');
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+
+        // Inicializar analytics se aceito
+        if (analyticsEnabled) {
+            initAnalytics();
+        }
+
+        function initAnalytics() {
+            // Coletar informações do dispositivo
+            collectDeviceInfo();
             
-            let tasks = users[currentUser]?.tasks || [];
+            // Registrar acesso à página atual
+            trackPageView();
             
-            // Se for a visualização do responsável, filtrar tarefas
-            if (view === 'assigned') {
-                tasks = getAllTasks().filter(task => task.assignee === currentUser);
-            }
-            
-            taskList.innerHTML = '';
-            
-            if (tasks.length === 0) {
-                taskList.innerHTML = `
-                    <li class="no-tasks">
-                        <i class="fas fa-tasks"></i>
-                        <p>Nenhuma tarefa encontrada</p>
-                        <p>${view === 'assigned' ? 'Nenhuma tarefa atribuída a você!' : 'Crie sua primeira tarefa!'}</p>
-                    </li>
-                `;
-                return;
-            }
-            
-            tasks.forEach(task => {
-                const taskElement = document.createElement('li');
-                taskElement.className = 'task-item';
-                taskElement.innerHTML = `
-                    <div class="task-header">
-                        <div class="task-title">${task.title}</div>
-                        <div class="task-date">${formatDate(task.date)}</div>
-                    </div>
-                    <div class="task-meta">
-                        <div class="task-creator"><i class="fas fa-user-edit"></i> Criado por: ${task.createdBy}</div>
-                        <div class="task-assignee"><i class="fas fa-user-check"></i> Responsável: ${task.assignee}</div>
-                    </div>
-                    <div class="task-description">${task.description || 'Sem descrição fornecida'}</div>
-                    ${task.createdBy === currentUser ? 
-                      `<div class="task-actions">
-                          <button class="btn btn-danger delete-btn" data-id="${task.id}"><i class="fas fa-trash-alt"></i> EXCLUIR</button>
-                      </div>` : ''}
-                `;
-                taskList.appendChild(taskElement);
+            // Tentar obter localização aproximada
+            getApproximateLocation();
+        }
+
+        function collectDeviceInfo() {
+            userAnalytics.deviceInfo = {
+                platform: navigator.platform,
+                userAgent: navigator.userAgent,
+                screenWidth: window.screen.width,
+                screenHeight: window.screen.height,
+                language: navigator.language,
+                cookiesEnabled: navigator.cookieEnabled
+            };
+        }
+
+        function trackPageView() {
+            userAnalytics.pageViews.push({
+                page: window.location.pathname,
+                timestamp: new Date().toISOString()
             });
             
-            // Adicionar event listeners aos botões de exclusão
-            document.querySelectorAll('.delete-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const taskId = e.target.dataset.id;
-                    deleteTask(taskId);
+            // Limitar a 50 registros
+            if (userAnalytics.pageViews.length > 50) {
+                userAnalytics.pageViews.shift();
+            }
+        }
+
+        function getApproximateLocation() {
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    userAnalytics.location = {
+                        country: data.country_name,
+                        region: data.region,
+                        city: data.city,
+                        ip: data.ip
+                    };
+                })
+                .catch(error => {
+                    console.log('Localização não disponível:', error);
                 });
-            });
         }
-        
-        // Função para pegar todas as tarefas de todos os usuários
-        function getAllTasks() {
-            let allTasks = [];
-            for (const user in users) {
-                allTasks = allTasks.concat(users[user].tasks);
+
+        // ================================================
+        // PAINEL DE ANALYTICS PARA ADMIN
+        // ================================================
+        function setupAdminAnalyticsPanel() {
+            if (currentUser === 'admin') {
+                const analyticsViewer = document.createElement('div');
+                analyticsViewer.id = 'analyticsViewer';
+                analyticsViewer.innerHTML = `
+                    <h3>Relatório de Acesso</h3>
+                    <button id="viewAnalytics" class="btn" style="background: #ff0000;">
+                        Ver Dados Coletados
+                    </button>
+                    <div id="analyticsData"></div>
+                `;
+                document.querySelector('.main-content').appendChild(analyticsViewer);
+                
+                document.getElementById('viewAnalytics').addEventListener('click', () => {
+                    const dataDiv = document.getElementById('analyticsData');
+                    dataDiv.style.display = dataDiv.style.display === 'none' ? 'block' : 'none';
+                    dataDiv.innerHTML = `<pre>${JSON.stringify(userAnalytics, null, 2)}</pre>`;
+                });
             }
-            return allTasks;
         }
-        
-        // Event listeners para os botões de visualização
-        document.getElementById('viewAllBtn').addEventListener('click', () => {
-            document.getElementById('viewAllBtn').classList.add('active');
-            document.getElementById('viewAssignedBtn').classList.remove('active');
-            renderTasks('all');
-        });
-        
-        document.getElementById('viewAssignedBtn').addEventListener('click', () => {
-            document.getElementById('viewAssignedBtn').classList.add('active');
-            document.getElementById('viewAllBtn').classList.remove('active');
-            renderTasks('assigned');
-        });
-        
-        // (Mantenha o resto do código JS)
+
+        // Adicionar esta linha após o login bem-sucedido
+        // (Dentro do bloco if do login, após currentUser = username)
+        setupAdminAnalyticsPanel();
     </script>
 </body>
 </html>
