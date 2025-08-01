@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heroncraft Tasks - Gerenciador de Tarefas</title>
+    <title>Heroncraft Tasks - Gerenciador Avançado</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -15,915 +15,1524 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: #f5f7fa;
             color: #333;
             min-height: 100vh;
             padding: 20px;
-            overflow-x: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .container {
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-height: 90vh;
         }
 
-        /* Tela de Login */
-        .login-screen {
-            background: #fff;
-            border-radius: 16px;
-            padding: 40px 30px;
-            max-width: 500px;
-            width: 90%;
-            margin: 0 auto;
+        /* Header */
+        header {
             text-align: center;
-            position: relative;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            border: 1px solid #eaeaea;
+            padding: 20px 0;
+            margin-bottom: 20px;
         }
 
-        .login-screen::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, #ff0000, #cc0000, #ff4d4d);
-        }
-
-        .login-title {
-            font-size: 2.2rem;
+        .logo {
+            font-size: 2.5rem;
             color: #ff0000;
             font-weight: 700;
             margin-bottom: 10px;
-        }
-
-        .login-subtitle {
-            color: #7f8c8d;
-            font-size: 1rem;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .form-group label {
-            color: #2c3e50;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .form-group input {
-            padding: 15px;
-            border: 2px solid #e0e6ed;
-            background: #f8fafc;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            border-radius: 10px;
-            color: #2c3e50;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #ff0000;
-            box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
-            background: #fff;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 16px 25px;
-            background: linear-gradient(90deg, #ff0000, #cc0000);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            width: 100%;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
-        }
-
-        .btn:active {
-            transform: translateY(1px);
-        }
-
-        .btn-danger {
-            background: linear-gradient(90deg, #ff0000, #cc0000);
-        }
-
-        .btn-danger:hover {
-            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
-        }
-
-        .switch-text {
-            margin-top: 20px;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .switch-text:hover {
-            color: #ff0000;
-            text-decoration: underline;
-        }
-
-        /* App Principal */
-        .app-container {
-            display: none;
-            flex-direction: column;
-            height: 100%;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            border: 1px solid #eaeaea;
-        }
-
-        header {
-            text-align: center;
-            padding: 25px 30px;
-            margin-bottom: 0;
-            background: linear-gradient(90deg, #ff0000, #cc0000);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, #ffffff, #ff0000);
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            letter-spacing: 0.5px;
         }
 
         .user-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
-            padding: 12px 20px;
-            background: rgba(255, 255, 255, 0.15);
+            background: #fff;
+            padding: 10px 20px;
             border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .user-info span {
-            color: #fff;
-            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
 
         .logout-btn {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 8px 18px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: #ff0000;
             color: white;
-            transition: all 0.3s ease;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+        /* Tabs */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
+        .tab {
+            padding: 15px 20px;
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            background: #ff0000;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Main Content */
         .main-content {
             display: flex;
-            gap: 25px;
-            padding: 30px;
-            margin-bottom: 0;
-            flex: 1;
+            gap: 20px;
         }
 
-        .task-form {
-            flex: 1;
-            background: #fff;
-            border-radius: 16px;
-            padding: 25px;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #f0f0f0;
-        }
-
-        .task-form h2 {
-            color: #2c3e50;
-            margin-bottom: 25px;
-            text-align: center;
-            font-size: 1.4rem;
-            font-weight: 700;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .task-form h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #ff0000, #cc0000);
-            border-radius: 2px;
-        }
-
-        .tasks-container {
+        /* Task Sections */
+        .task-section {
             flex: 2;
             background: #fff;
-            border-radius: 16px;
-            padding: 25px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #f0f0f0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
         }
 
-        .tasks-container h2 {
-            color: #2c3e50;
-            margin-bottom: 25px;
-            text-align: center;
-            font-size: 1.4rem;
-            font-weight: 700;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .tasks-container h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #ff0000, #cc0000);
-            border-radius: 2px;
+        .task-section.active {
+            display: block;
         }
 
         .task-list {
             list-style: none;
-            flex: 1;
+            max-height: 500px;
             overflow-y: auto;
-            max-height: 600px;
-            padding-right: 10px;
-        }
-
-        .task-list::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .task-list::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
-        }
-
-        .task-list::-webkit-scrollbar-thumb {
-            background: #c3cfe2;
-            border-radius: 4px;
-        }
-
-        .task-list::-webkit-scrollbar-thumb:hover {
-            background: #a4b0be;
         }
 
         .task-item {
-            background: #fff;
-            border: 1px solid #e0e6ed;
-            border-left: 4px solid #ff0000;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            position: relative;
-            color: #2c3e50;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
-        }
-
-        .task-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.07);
-            border-left: 4px solid #cc0000;
-        }
-
-        .task-header {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed #e0e6ed;
         }
 
-        .task-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #2c3e50;
-            max-width: 70%;
-            word-break: break-word;
+        .task-item:last-child {
+            border-bottom: none;
         }
 
-        .task-date {
-            font-size: 0.8rem;
-            color: #7f8c8d;
-            font-weight: 500;
+        .task-info h3 {
+            margin-bottom: 5px;
         }
 
         .task-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 0.85rem;
-        }
-
-        .task-creator, .task-assignee {
-            background: #f8fafc;
-            color: #ff0000;
-            padding: 6px 12px;
-            border-radius: 20px;
-            border: 1px solid #e0e6ed;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .task-description {
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            word-break: break-word;
-            background: #f8fafc;
-            padding: 15px;
-            border-radius: 8px;
-            color: #555;
-        }
-
-        .task-actions {
+            font-size: 0.8rem;
+            color: #777;
             display: flex;
             gap: 10px;
-            justify-content: flex-end;
         }
 
-        .no-tasks {
-            text-align: center;
-            padding: 40px;
-            color: #a4b0be;
-            font-size: 1rem;
-            font-weight: 500;
+        .task-deadline {
+            color: #ff0000;
+            font-weight: 600;
         }
 
-        .no-tasks i {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #e0e6ed;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: auto;
-            color: #7f8c8d;
-            font-size: 0.85rem;
-            background: #f8fafc;
-            border-top: 1px solid #eaeaea;
-        }
-
-        /* Cookie Banner */
-        #cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #2c3e50;
+        .task-actions button {
+            background: #ff0000;
             color: white;
-            padding: 15px;
-            text-align: center;
-            z-index: 1000;
-            display: none;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
         }
 
-        #cookie-banner p {
+        /* Task Form */
+        .task-form {
+            flex: 1;
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select,
+        .form-group input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Chat */
+        .chat-container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #f5f5f5;
+        }
+
+        .message-sender {
+            font-weight: 600;
+            color: #ff0000;
+        }
+
+        .message-time {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .chat-input button {
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stats-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .stats-card h3 {
+            margin-bottom: 15px;
+            color: #ff0000;
+        }
+
+        .progress-container {
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: #ff0000;
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        /* Calendar */
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .calendar th, .calendar td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .calendar th {
+            background: #ff0000;
+            color: white;
+        }
+
+        .calendar td {
+            height: 80px;
+            vertical-align: top;
+        }
+
+        .calendar-day {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .calendar-tasks {
+            font-size: 0.7rem;
+            color: #ff0000;
+        }
+
+        /* Notifications */
+        .notification {
+            background: #fff;
+            border-left: 4px solid #ff0000;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .notification h4 {
+            margin-bottom: 5px;
+        }
+
+        .notification-time {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* Reports */
+        .report-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
             margin-bottom: 10px;
         }
 
-        #cookie-banner a {
-            color: #4af7c5;
-            text-decoration: underline;
-        }
-
-        #accept-cookies {
-            background: #ff0000;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-
-        #reject-cookies {
-            background: transparent;
-            color: white;
-            border: 1px solid white;
-            padding: 8px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        /* Analytics Viewer */
-        #analyticsViewer {
-            margin-top: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border: 1px solid #e0e6ed;
-        }
-
-        #analyticsViewer h3 {
-            color: #ff0000;
-            margin-bottom: 15px;
-        }
-
-        #analyticsData {
-            display: none;
-            background: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 10px;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .view-switcher {
+        .report-header {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-            gap: 10px;
+            justify-content: space-between;
+            margin-bottom: 10px;
         }
-        
-        .view-switcher button {
-            padding: 8px 16px;
-            background: #f0f0f0;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+
+        .report-status {
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
         }
-        
-        .view-switcher button.active {
-            background: #ff0000;
+
+        .status-pending {
+            background-color: #ffeb3b;
+            color: #333;
+        }
+
+        .status-completed {
+            background-color: #4caf50;
             color: white;
+        }
+
+        .status-late {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .report-form textarea {
+            height: 150px;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         /* Responsividade */
-        @media (max-width: 992px) {
+        @media (max-width: 768px) {
             .main-content {
                 flex-direction: column;
             }
             
-            h1 {
-                font-size: 1.8rem;
+            .dashboard {
+                grid-template-columns: 1fr;
             }
-            
-            .login-title {
-                font-size: 1.8rem;
-            }
-        }
 
-        @media (max-width: 576px) {
-            .task-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
+            .tabs {
+                flex-wrap: wrap;
             }
-            
-            .task-title {
-                max-width: 100%;
-            }
-            
-            .task-meta {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .task-actions {
-                justify-content: center;
-            }
-            
-            #cookie-banner {
-                padding: 10px;
-            }
-            
-            #accept-cookies, #reject-cookies {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-        }
 
-        /* Animação de entrada */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .login-screen, .app-container {
-            animation: fadeIn 0.6s ease-out;
+            .tab {
+                flex: 1 0 33%;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Cookie Banner -->
-    <div id="cookie-banner">
-        <p>Nós utilizamos cookies para melhorar sua experiência. <a href="/privacidade">Saiba mais</a></p>
-        <button id="accept-cookies">Aceitar</button>
-        <button id="reject-cookies">Recusar</button>
-    </div>
-
     <div class="container">
-        <!-- Tela de Login -->
-        <div class="login-screen" id="loginScreen">
-            <h1 class="login-title">Heroncraft Tasks</h1>
-            <p class="login-subtitle">Gerencie suas tarefas de forma eficiente</p>
-            
-            <form class="login-form" id="loginForm">
-                <div class="form-group">
-                    <label for="username"><i class="fas fa-user"></i> USUÁRIO</label>
-                    <input type="text" id="username" placeholder="Digite seu usuário..." required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="password"><i class="fas fa-lock"></i> SENHA</label>
-                    <input type="password" id="password" placeholder="Digite sua senha..." required>
-                </div>
-                
-                <button type="submit" class="btn">ENTRAR</button>
-                
-                <p class="switch-text" id="showRegister">Criar nova conta</p>
-            </form>
+        <!-- Header -->
+        <header>
+            <div class="logo">Heroncraft Tasks</div>
+        </header>
+
+        <!-- User Info -->
+        <div class="user-info" id="userInfo" style="display: none;">
+            <span id="loggedUser"></span>
+            <button class="logout-btn" id="logoutBtn">Sair <i class="fas fa-sign-out-alt"></i></button>
         </div>
-        
-        <!-- Tela de Registro -->
-        <div class="login-screen" id="registerScreen" style="display: none;">
-            <h1 class="login-title">CRIAR CONTA</h1>
-            <p class="login-subtitle">Comece a gerenciar suas tarefas hoje</p>
-            
-            <form class="login-form" id="registerForm">
-                <div class="form-group">
-                    <label for="newUsername"><i class="fas fa-user"></i> NOVO USUÁRIO</label>
-                    <input type="text" id="newUsername" placeholder="Crie um nome de usuário..." required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="newPassword"><i class="fas fa-lock"></i> NOVA SENHA</label>
-                    <input type="password" id="newPassword" placeholder="Crie uma senha..." required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="confirmPassword"><i class="fas fa-lock"></i> CONFIRMAR SENHA</label>
-                    <input type="password" id="confirmPassword" placeholder="Confirme sua senha..." required>
-                </div>
-                
-                <button type="submit" class="btn">CRIAR CONTA</button>
-                
-                <p class="switch-text" id="showLogin">Voltar para login</p>
-            </form>
+
+        <!-- Login Screen -->
+        <div id="loginScreen">
+            <div class="task-form">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Entrar</button>
+                </form>
+                <p style="text-align: center; margin-top: 15px;">Não tem conta? <a href="#" id="showRegister">Registre-se</a></p>
+            </div>
         </div>
-        
-        <!-- Aplicativo Principal (mostrado após login) -->
-        <div class="app-container" id="appContainer">
-            <header>
-                <h1>Heroncraft Tasks</h1>
-                <p class="login-subtitle">Gerenciador de Tarefas Moderno</p>
-                
-                <div class="user-info">
-                    <div>Logado como: <span id="loggedUser"></span></div>
-                    <button class="btn logout-btn" id="logoutBtn">SAIR <i class="fas fa-sign-out-alt"></i></button>
-                </div>
-            </header>
-            
+
+        <!-- Register Screen -->
+        <div id="registerScreen" style="display: none;">
+            <div class="task-form">
+                <h2>Registrar</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="newUsername">Usuário</label>
+                        <input type="text" id="newUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">Senha</label>
+                        <input type="password" id="newPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar Senha</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="isAdmin">É administrador?</label>
+                        <select id="isAdmin">
+                            <option value="false">Não</option>
+                            <option value="true">Sim</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">Registrar</button>
+                </form>
+                <p style="text-align: center; margin-top: 15px;">Já tem conta? <a href="#" id="showLogin">Faça login</a></p>
+            </div>
+        </div>
+
+        <!-- App Content (shown after login) -->
+        <div id="appContent" style="display: none;">
+            <!-- Tabs -->
+            <div class="tabs">
+                <div class="tab active" data-tab="general">Tarefas Gerais</div>
+                <div class="tab" data-tab="personal">Minhas Tarefas</div>
+                <div class="tab" data-tab="sent">Tarefas Enviadas</div>
+                <div class="tab" data-tab="dashboard">Dashboard</div>
+                <div class="tab" data-tab="calendar">Calendário</div>
+                <div class="tab" data-tab="notifications">Notificações</div>
+                <div class="tab" data-tab="reports">Relatórios</div>
+            </div>
+
+            <!-- Main Content -->
             <div class="main-content">
+                <!-- Task Sections -->
+                <div class="task-section active" id="generalTasks">
+                    <h2>Tarefas Gerais</h2>
+                    <ul class="task-list" id="generalTaskList"></ul>
+                </div>
+
+                <div class="task-section" id="personalTasks">
+                    <h2>Minhas Tarefas</h2>
+                    <ul class="task-list" id="personalTaskList"></ul>
+                </div>
+
+                <div class="task-section" id="sentTasks">
+                    <h2>Tarefas Enviadas</h2>
+                    <ul class="task-list" id="sentTaskList"></ul>
+                </div>
+
+                <!-- Dashboard -->
+                <div class="task-section" id="dashboardSection">
+                    <h2>Dashboard de Produtividade</h2>
+                    <div class="dashboard">
+                        <div class="stats-card">
+                            <h3>Metas Diárias</h3>
+                            <div id="dailyGoals">
+                                <p>Concluído: <span id="dailyCompleted">0</span>/<span id="dailyTarget">5</span> tarefas</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" id="dailyProgress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-card">
+                            <h3>Metas Semanais</h3>
+                            <div id="weeklyGoals">
+                                <p>Concluído: <span id="weeklyCompleted">0</span>/<span id="weeklyTarget">20</span> tarefas</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" id="weeklyProgress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-card">
+                            <h3>Estatísticas</h3>
+                            <p>Tarefas Totais: <span id="totalTasks">0</span></p>
+                            <p>Tarefas Concluídas: <span id="completedTasks">0</span></p>
+                            <p>Taxa de Conclusão: <span id="completionRate">0</span>%</p>
+                        </div>
+                        
+                        <div class="stats-card">
+                            <h3>Próximos Prazos</h3>
+                            <ul id="upcomingDeadlines"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calendar -->
+                <div class="task-section" id="calendarSection">
+                    <h2>Calendário de Tarefas</h2>
+                    <div id="calendarContainer"></div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="task-section" id="notificationsSection">
+                    <h2>Notificações</h2>
+                    <div id="notificationsList"></div>
+                </div>
+
+                <!-- Reports Section -->
+                <div class="task-section" id="reportsSection">
+                    <h2>Relatórios Semanais</h2>
+                    <div id="reportsList"></div>
+                    
+                    <div class="report-form" id="reportFormContainer" style="margin-top: 20px;">
+                        <h3>Enviar Relatório Semanal</h3>
+                        <form id="reportForm">
+                            <div class="form-group">
+                                <label for="reportWeek">Semana</label>
+                                <input type="week" id="reportWeek" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reportContent">Conteúdo</label>
+                                <textarea id="reportContent" required placeholder="Descreva suas atividades desta semana, conquistas, desafios e planos para a próxima semana..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Enviar Relatório</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Task Form -->
                 <div class="task-form">
-                    <h2>CRIAR NOVA TAREFA</h2>
+                    <h2>Criar Nova Tarefa</h2>
                     <form id="taskForm">
                         <div class="form-group">
-                            <label for="taskTitle"><i class="fas fa-heading"></i> TÍTULO</label>
-                            <input type="text" id="taskTitle" placeholder="Título da tarefa..." required>
+                            <label for="taskTitle">Título</label>
+                            <input type="text" id="taskTitle" required>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="taskAssignee"><i class="fas fa-user-friends"></i> RESPONSÁVEL</label>
-                            <input type="text" id="taskAssignee" placeholder="Atribuir a..." required>
+                            <label for="taskAssignee">Atribuir a</label>
+                            <select id="taskAssignee" required>
+                                <option value="">Selecione um usuário</option>
+                            </select>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="taskDescription"><i class="fas fa-align-left"></i> DESCRIÇÃO</label>
-                            <textarea id="taskDescription" placeholder="Descrição detalhada da tarefa..." style="height: 120px; font-family: 'Montserrat', sans-serif; padding: 15px; border: 2px solid #e0e6ed; background: #f8fafc; border-radius: 10px; resize: vertical;"></textarea>
+                            <label for="taskDescription">Descrição</label>
+                            <textarea id="taskDescription"></textarea>
                         </div>
-                        
-                        <button type="submit" class="btn">ADICIONAR TAREFA</button>
+                        <div class="form-group">
+                            <label for="taskDeadline">Prazo</label>
+                            <input type="date" id="taskDeadline">
+                        </div>
+                        <button type="submit" class="submit-btn">Criar Tarefa</button>
                     </form>
                 </div>
-                
-                <div class="tasks-container">
-                    <h2>SUAS TAREFAS</h2>
-                    <div class="view-switcher">
-                        <button id="viewAllBtn" class="active">Todas Tarefas</button>
-                        <button id="viewAssignedBtn">Atribuídas a Mim</button>
-                    </div>
-                    <ul id="taskList" class="task-list">
-                        <!-- Tarefas serão inseridas aqui -->
-                    </ul>
+            </div>
+
+            <!-- Chat -->
+            <div class="chat-container">
+                <h2>Chat Geral</h2>
+                <div class="chat-messages" id="chatMessages"></div>
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="Digite sua mensagem...">
+                    <button id="sendMessageBtn">Enviar</button>
                 </div>
             </div>
-            
-            <footer>
-                <p>© 2023 Heroncraft Tasks - Gerencie suas tarefas com eficiência</p>
-                <p>Simplifique seu fluxo de trabalho e aumente sua produtividade</p>
-            </footer>
+
+            <!-- Admin Panel (visible only to admins) -->
+            <div class="admin-panel" id="adminPanel" style="display: none;">
+                <h2>Painel de Administração</h2>
+                <div class="form-group">
+                    <label for="reportDeadlineDay">Dia da semana para entrega de relatórios:</label>
+                    <select id="reportDeadlineDay">
+                        <option value="1">Segunda-feira</option>
+                        <option value="2">Terça-feira</option>
+                        <option value="3">Quarta-feira</option>
+                        <option value="4">Quinta-feira</option>
+                        <option value="5">Sexta-feira</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reportDeadlineHour">Hora limite (HH:MM):</label>
+                    <input type="time" id="reportDeadlineHour" step="60">
+                </div>
+                <button id="saveReportSettings" class="submit-btn">Salvar Configurações</button>
+                
+                <h3 style="margin-top: 20px;">Relatórios Atrasados</h3>
+                <div id="lateReportsList"></div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Sistema de autenticação
-        const users = JSON.parse(localStorage.getItem('heroncraft_users')) || {
-            'admin': { password: 'admin123', tasks: [] },
-            'usuario': { password: 'senha123', tasks: [] }
+        // Sistema de armazenamento
+        let users = JSON.parse(localStorage.getItem('heroncraft_users')) || {};
+        let tasks = JSON.parse(localStorage.getItem('heroncraft_tasks')) || [];
+        let messages = JSON.parse(localStorage.getItem('heroncraft_messages')) || [];
+        let notifications = JSON.parse(localStorage.getItem('heroncraft_notifications')) || [];
+        let reports = JSON.parse(localStorage.getItem('heroncraft_reports')) || [];
+        let settings = JSON.parse(localStorage.getItem('heroncraft_settings')) || {
+            reportDeadlineDay: 5, // Sexta-feira
+            reportDeadlineHour: "18:00" // 18:00 (6PM)
         };
         
-        // Variável global para o usuário atual
         let currentUser = null;
-        
+        let isAdmin = false;
+        let reportCheckInterval = null;
+
         // Elementos DOM
         const loginScreen = document.getElementById('loginScreen');
         const registerScreen = document.getElementById('registerScreen');
-        const appContainer = document.getElementById('appContainer');
+        const appContent = document.getElementById('appContent');
+        const userInfo = document.getElementById('userInfo');
+        const loggedUserSpan = document.getElementById('loggedUser');
+        const logoutBtn = document.getElementById('logoutBtn');
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
         const showRegister = document.getElementById('showRegister');
         const showLogin = document.getElementById('showLogin');
-        const loggedUserSpan = document.getElementById('loggedUser');
-        const logoutBtn = document.getElementById('logoutBtn');
         const taskForm = document.getElementById('taskForm');
-        const taskList = document.getElementById('taskList');
-        const viewAllBtn = document.getElementById('viewAllBtn');
-        const viewAssignedBtn = document.getElementById('viewAssignedBtn');
-        
-        // ================================================
-        // SISTEMA DE ANALYTICS
-        // ================================================
-        const analyticsEnabled = localStorage.getItem('cookies-accepted') === 'true';
-        const userAnalytics = {
-            pageViews: [],
-            deviceInfo: {},
-            location: null
-        };
+        const tabs = document.querySelectorAll('.tab');
+        const taskSections = document.querySelectorAll('.task-section');
+        const generalTaskList = document.getElementById('generalTaskList');
+        const personalTaskList = document.getElementById('personalTaskList');
+        const sentTaskList = document.getElementById('sentTaskList');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendMessageBtn = document.getElementById('sendMessageBtn');
+        const calendarContainer = document.getElementById('calendarContainer');
+        const notificationsList = document.getElementById('notificationsList');
+        const reportsList = document.getElementById('reportsList');
+        const reportForm = document.getElementById('reportForm');
+        const adminPanel = document.getElementById('adminPanel');
+        const reportDeadlineDay = document.getElementById('reportDeadlineDay');
+        const reportDeadlineHour = document.getElementById('reportDeadlineHour');
+        const saveReportSettings = document.getElementById('saveReportSettings');
+        const lateReportsList = document.getElementById('lateReportsList');
+        const dailyCompleted = document.getElementById('dailyCompleted');
+        const dailyTarget = document.getElementById('dailyTarget');
+        const dailyProgress = document.getElementById('dailyProgress');
+        const weeklyCompleted = document.getElementById('weeklyCompleted');
+        const weeklyTarget = document.getElementById('weeklyTarget');
+        const weeklyProgress = document.getElementById('weeklyProgress');
+        const totalTasks = document.getElementById('totalTasks');
+        const completedTasks = document.getElementById('completedTasks');
+        const completionRate = document.getElementById('completionRate');
+        const upcomingDeadlines = document.getElementById('upcomingDeadlines');
+        const taskAssigneeSelect = document.getElementById('taskAssignee');
 
-        // Mostrar banner de cookies se não tiver resposta
-        if (localStorage.getItem('cookies-accepted') === null) {
-            document.getElementById('cookie-banner').style.display = 'block';
-        }
-
-        // Eventos do banner
-        document.getElementById('accept-cookies').addEventListener('click', () => {
-            localStorage.setItem('cookies-accepted', 'true');
-            document.getElementById('cookie-banner').style.display = 'none';
-            initAnalytics();
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            // Carrega configurações
+            reportDeadlineDay.value = settings.reportDeadlineDay || 5;
+            reportDeadlineHour.value = settings.reportDeadlineHour || "18:00";
+            
+            // Verifica relatórios atrasados a cada hora
+            reportCheckInterval = setInterval(checkLateReports, 3600000);
         });
 
-        document.getElementById('reject-cookies').addEventListener('click', () => {
-            localStorage.setItem('cookies-accepted', 'false');
-            document.getElementById('cookie-banner').style.display = 'none';
-        });
-
-        // Inicializar analytics se aceito
-        if (analyticsEnabled) {
-            initAnalytics();
-        }
-
-        function initAnalytics() {
-            collectDeviceInfo();
-            trackPageView('Página Inicial');
-            getApproximateLocation();
-        }
-
-        function collectDeviceInfo() {
-            userAnalytics.deviceInfo = {
-                platform: navigator.platform,
-                userAgent: navigator.userAgent,
-                screenWidth: window.screen.width,
-                screenHeight: window.screen.height,
-                language: navigator.language,
-                cookiesEnabled: navigator.cookieEnabled
-            };
-        }
-
-        function trackPageView(pageName) {
-            if (!analyticsEnabled) return;
-            
-            userAnalytics.pageViews.push({
-                page: pageName || window.location.pathname,
-                timestamp: new Date().toISOString()
-            });
-            
-            // Limitar a 50 registros
-            if (userAnalytics.pageViews.length > 50) {
-                userAnalytics.pageViews.shift();
-            }
-        }
-
-        function getApproximateLocation() {
-            if (!analyticsEnabled) return;
-            
-            // Primeiro tentamos uma API
-            fetch('https://ipwho.is/')
-                .then(response => {
-                    if (!response.ok) throw new Error('Falha na API primária');
-                    return response.json();
-                })
-                .then(data => {
-                    userAnalytics.location = {
-                        country: data.country,
-                        region: data.region,
-                        city: data.city,
-                        ip: data.ip
-                    };
-                })
-                .catch(error => {
-                    console.log('Usando API alternativa...', error);
-                    // Fallback para API secundária
-                    fetch('https://ipapi.co/json/')
-                        .then(response => response.json())
-                        .then(data => {
-                            userAnalytics.location = {
-                                country: data.country_name,
-                                region: data.region,
-                                city: data.city,
-                                ip: data.ip
-                            };
-                        })
-                        .catch(error => {
-                            console.log('Localização não disponível:', error);
-                            userAnalytics.location = {
-                                error: "Localização indisponível"
-                            };
-                        });
-                });
-        }
-
-        function setupAdminAnalyticsPanel() {
-            if (currentUser === 'admin') {
-                const analyticsViewer = document.createElement('div');
-                analyticsViewer.id = 'analyticsViewer';
-                analyticsViewer.innerHTML = `
-                    <h3>Relatório de Acesso</h3>
-                    <button id="viewAnalytics" class="btn">Ver Dados Coletados</button>
-                    <div id="analyticsData" style="display:none;"></div>
-                `;
-                document.querySelector('.main-content').appendChild(analyticsViewer);
+        // Alternar entre abas
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                taskSections.forEach(s => s.classList.remove('active'));
                 
-                document.getElementById('viewAnalytics').addEventListener('click', () => {
-                    const dataDiv = document.getElementById('analyticsData');
-                    dataDiv.style.display = dataDiv.style.display === 'none' ? 'block' : 'none';
-                    dataDiv.innerHTML = `<pre>${JSON.stringify(userAnalytics, null, 2)}</pre>`;
-                });
-            }
-        }
+                tab.classList.add('active');
+                document.getElementById(`${tab.dataset.tab}Section`).classList.add('active');
+                
+                if (tab.dataset.tab === 'calendar') {
+                    renderCalendar();
+                } else if (tab.dataset.tab === 'dashboard') {
+                    updateDashboard();
+                } else if (tab.dataset.tab === 'notifications') {
+                    renderNotifications();
+                } else if (tab.dataset.tab === 'reports') {
+                    renderReports();
+                } else {
+                    renderTasks();
+                }
+            });
+        });
 
-        // ================================================
-        // SISTEMA DE TAREFAS
-        // ================================================
         // Alternar entre login e registro
-        showRegister.addEventListener('click', () => {
+        showRegister.addEventListener('click', (e) => {
+            e.preventDefault();
             loginScreen.style.display = 'none';
             registerScreen.style.display = 'block';
-            if (analyticsEnabled) trackPageView('Tela de Registro');
         });
-        
-        showLogin.addEventListener('click', () => {
+
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
             registerScreen.style.display = 'none';
             loginScreen.style.display = 'block';
-            if (analyticsEnabled) trackPageView('Tela de Login');
         });
-        
+
         // Login
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            
+
             if (users[username] && users[username].password === password) {
                 currentUser = username;
+                isAdmin = users[username].isAdmin || false;
                 loggedUserSpan.textContent = currentUser;
                 loginScreen.style.display = 'none';
-                appContainer.style.display = 'flex';
+                appContent.style.display = 'block';
+                userInfo.style.display = 'flex';
                 
-                if (analyticsEnabled) {
-                    trackPageView('Login');
-                    collectDeviceInfo();
-                }
+                // Mostrar painel de admin se for admin
+                adminPanel.style.display = isAdmin ? 'block' : 'none';
+                
+                // Preencher dropdown de atribuição de tarefas
+                populateAssigneeDropdown();
                 
                 renderTasks();
-                setupAdminAnalyticsPanel();
+                renderMessages();
+                renderCalendar();
+                updateDashboard();
+                renderNotifications();
+                renderReports();
+                checkDeadlines();
+                checkLateReports();
+                
+                // Verificar notificações a cada minuto
+                setInterval(checkDeadlines, 60000);
             } else {
                 alert('Usuário ou senha incorretos!');
             }
         });
-        
+
         // Registro
         registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const newUsername = document.getElementById('newUsername').value;
             const newPassword = document.getElementById('newPassword').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
-            
+            const adminStatus = document.getElementById('isAdmin').value === 'true';
+
             if (users[newUsername]) {
                 alert('Este usuário já existe!');
                 return;
             }
-            
+
             if (newPassword !== confirmPassword) {
                 alert('As senhas não coincidem!');
                 return;
             }
-            
-            users[newUsername] = { password: newPassword, tasks: [] };
+
+            users[newUsername] = { 
+                password: newPassword,
+                isAdmin: adminStatus
+            };
             localStorage.setItem('heroncraft_users', JSON.stringify(users));
-            
-            if (analyticsEnabled) trackPageView('Registro de Novo Usuário');
             
             alert('Conta criada com sucesso! Faça login para continuar.');
             registerScreen.style.display = 'none';
             loginScreen.style.display = 'block';
         });
-        
+
         // Logout
         logoutBtn.addEventListener('click', () => {
-            if (analyticsEnabled) trackPageView('Logout');
             currentUser = null;
-            appContainer.style.display = 'none';
+            isAdmin = false;
+            appContent.style.display = 'none';
+            userInfo.style.display = 'none';
             loginScreen.style.display = 'block';
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
         });
-        
-        // Funções para gerenciamento de tarefas
-        function generateId() {
-            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+
+        // Preencher dropdown de atribuição de tarefas
+        function populateAssigneeDropdown() {
+            taskAssigneeSelect.innerHTML = '<option value="">Selecione um usuário</option>';
+            
+            for (const username in users) {
+                const option = document.createElement('option');
+                option.value = username;
+                option.textContent = username;
+                taskAssigneeSelect.appendChild(option);
+            }
         }
-        
-        function formatDate(date) {
-            return new Date(date).toLocaleDateString('pt-BR', {
+
+        // Criar tarefa
+        taskForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('taskTitle').value;
+            const assignee = document.getElementById('taskAssignee').value;
+            const description = document.getElementById('taskDescription').value;
+            const deadline = document.getElementById('taskDeadline').value;
+
+            if (!title || !assignee) return;
+
+            const newTask = {
+                id: Date.now(),
+                title,
+                assignee,
+                description,
+                createdBy: currentUser,
+                createdAt: new Date().toISOString(),
+                deadline: deadline || null,
+                status: 'pending'
+            };
+
+            tasks.push(newTask);
+            localStorage.setItem('heroncraft_tasks', JSON.stringify(tasks));
+            
+            taskForm.reset();
+            renderTasks();
+            renderCalendar();
+            updateDashboard();
+            checkDeadlines();
+            
+            // Notificação para o responsável
+            if (assignee !== currentUser) {
+                const notification = {
+                    id: Date.now(),
+                    type: 'new_task',
+                    taskId: newTask.id,
+                    title: `Nova tarefa atribuída: ${title}`,
+                    message: `${currentUser} atribuiu uma nova tarefa para você`,
+                    recipient: assignee,
+                    timestamp: new Date().toISOString(),
+                    read: false
+                };
+                
+                notifications.push(notification);
+                localStorage.setItem('heroncraft_notifications', JSON.stringify(notifications));
+                
+                if (assignee === currentUser) {
+                    renderNotifications();
+                }
+            }
+        });
+
+        // Enviar mensagem
+        sendMessageBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text || !currentUser) return;
+
+            const newMessage = {
+                id: Date.now(),
+                sender: currentUser,
+                text,
+                timestamp: new Date().toISOString()
+            };
+
+            messages.push(newMessage);
+            localStorage.setItem('heroncraft_messages', JSON.stringify(messages));
+            
+            chatInput.value = '';
+            renderMessages();
+        }
+
+        // Renderizar tarefas
+        function renderTasks() {
+            generalTaskList.innerHTML = '';
+            personalTaskList.innerHTML = '';
+            sentTaskList.innerHTML = '';
+
+            if (tasks.length === 0) {
+                generalTaskList.innerHTML = '<li>Nenhuma tarefa encontrada</li>';
+                personalTaskList.innerHTML = '<li>Nenhuma tarefa encontrada</li>';
+                sentTaskList.innerHTML = '<li>Nenhuma tarefa encontrada</li>';
+                return;
+            }
+
+            tasks.forEach(task => {
+                const taskElement = document.createElement('li');
+                taskElement.className = 'task-item';
+                
+                let deadlineInfo = '';
+                if (task.deadline) {
+                    deadlineInfo = `<span class="task-deadline">Prazo: ${formatDate(task.deadline)}</span>`;
+                }
+                
+                taskElement.innerHTML = `
+                    <div class="task-info">
+                        <h3>${task.title}</h3>
+                        <div class="task-meta">
+                            <span>Responsável: ${task.assignee}</span>
+                            <span>Criado por: ${task.createdBy}</span>
+                            <span>${formatDate(task.createdAt)}</span>
+                            ${deadlineInfo}
+                        </div>
+                        <p>${task.description || 'Sem descrição'}</p>
+                    </div>
+                    <div class="task-actions">
+                        ${task.createdBy === currentUser ? 
+                          `<button class="delete-btn" data-id="${task.id}">Excluir</button>` : ''}
+                        ${task.assignee === currentUser ? 
+                          `<button class="complete-btn" data-id="${task.id}">Concluir</button>` : ''}
+                    </div>
+                `;
+
+                // Adiciona às listas apropriadas
+                generalTaskList.appendChild(taskElement.cloneNode(true));
+                
+                if (task.assignee === currentUser) {
+                    personalTaskList.appendChild(taskElement.cloneNode(true));
+                }
+                
+                if (task.createdBy === currentUser) {
+                    sentTaskList.appendChild(taskElement);
+                }
+            });
+
+            // Adiciona event listeners para botões
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const taskId = parseInt(e.target.dataset.id);
+                    deleteTask(taskId);
+                });
+            });
+            
+            document.querySelectorAll('.complete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const taskId = parseInt(e.target.dataset.id);
+                    completeTask(taskId);
+                });
+            });
+        }
+
+        // Excluir tarefa
+        function deleteTask(taskId) {
+            if (confirm('Tem certeza que deseja excluir esta tarefa?')) {
+                tasks = tasks.filter(task => task.id !== taskId);
+                localStorage.setItem('heroncraft_tasks', JSON.stringify(tasks));
+                renderTasks();
+                renderCalendar();
+                updateDashboard();
+            }
+        }
+
+        // Concluir tarefa
+        function completeTask(taskId) {
+            const taskIndex = tasks.findIndex(task => task.id === taskId);
+            if (taskIndex !== -1) {
+                tasks[taskIndex].status = 'completed';
+                tasks[taskIndex].completedAt = new Date().toISOString();
+                localStorage.setItem('heroncraft_tasks', JSON.stringify(tasks));
+                
+                // Notificação para o criador
+                const task = tasks[taskIndex];
+                if (task.createdBy !== currentUser) {
+                    const notification = {
+                        id: Date.now(),
+                        type: 'task_completed',
+                        taskId: task.id,
+                        title: `Tarefa concluída: ${task.title}`,
+                        message: `${currentUser} concluiu a tarefa que você criou`,
+                        recipient: task.createdBy,
+                        timestamp: new Date().toISOString(),
+                        read: false
+                    };
+                    
+                    notifications.push(notification);
+                    localStorage.setItem('heroncraft_notifications', JSON.stringify(notifications));
+                }
+                
+                renderTasks();
+                updateDashboard();
+            }
+        }
+
+        // Renderizar mensagens
+        function renderMessages() {
+            chatMessages.innerHTML = '';
+
+            if (messages.length === 0) {
+                chatMessages.innerHTML = '<p>Nenhuma mensagem ainda. Seja o primeiro a enviar!</p>';
+                return;
+            }
+
+            messages.forEach(msg => {
+                const messageElement = document.createElement('div');
+                messageElement.className = 'message';
+                messageElement.innerHTML = `
+                    <div class="message-sender">${msg.sender}</div>
+                    <div class="message-text">${msg.text}</div>
+                    <div class="message-time">${formatDate(msg.timestamp)}</div>
+                `;
+                chatMessages.appendChild(messageElement);
+            });
+
+            // Rolagem automática para a última mensagem
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Renderizar calendário
+        function renderCalendar() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth();
+            
+            // Cria cabeçalho do calendário
+            const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                              "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+            
+            let calendarHTML = `<h3>${monthNames[month]} ${year}</h3>`;
+            calendarHTML += `<table class="calendar"><tr>
+                <th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
+            </tr><tr>`;
+            
+            // Primeiro dia do mês
+            const firstDay = new Date(year, month, 1).getDay();
+            
+            // Dias no mês
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            // Preenche os dias vazios no início
+            for (let i = 0; i < firstDay; i++) {
+                calendarHTML += '<td></td>';
+            }
+            
+            // Preenche os dias do mês
+            for (let day = 1; day <= daysInMonth; day++) {
+                const currentDate = new Date(year, month, day);
+                const dateStr = currentDate.toISOString().split('T')[0];
+                
+                // Verifica se há tarefas para este dia
+                const dayTasks = tasks.filter(task => {
+                    if (!task.deadline) return false;
+                    const taskDate = new Date(task.deadline).toISOString().split('T')[0];
+                    return taskDate === dateStr;
+                });
+                
+                let taskInfo = '';
+                if (dayTasks.length > 0) {
+                    taskInfo = `<div class="calendar-tasks">${dayTasks.length} tarefa(s)</div>`;
+                }
+                
+                calendarHTML += `<td>
+                    <div class="calendar-day">${day}</div>
+                    ${taskInfo}
+                </td>`;
+                
+                // Quebra de linha no final da semana
+                if ((day + firstDay) % 7 === 0 && day !== daysInMonth) {
+                    calendarHTML += '</tr><tr>';
+                }
+            }
+            
+            calendarHTML += '</tr></table>';
+            calendarContainer.innerHTML = calendarHTML;
+        }
+
+        // Renderizar notificações
+        function renderNotifications() {
+            notificationsList.innerHTML = '';
+            
+            const userNotifications = notifications
+                .filter(n => n.recipient === currentUser)
+                .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            if (userNotifications.length === 0) {
+                notificationsList.innerHTML = '<p>Nenhuma notificação no momento.</p>';
+                return;
+            }
+            
+            userNotifications.forEach(notification => {
+                const notificationElement = document.createElement('div');
+                notificationElement.className = 'notification';
+                notificationElement.innerHTML = `
+                    <h4>${notification.title}</h4>
+                    <p>${notification.message}</p>
+                    <div class="notification-time">${formatDate(notification.timestamp)}</div>
+                `;
+                notificationsList.appendChild(notificationElement);
+            });
+        }
+
+        // Renderizar relatórios
+        function renderReports() {
+            reportsList.innerHTML = '';
+            
+            const userReports = reports
+                .filter(r => r.user === currentUser || isAdmin)
+                .sort((a, b) => new Date(b.weekStart) - new Date(a.weekStart));
+            
+            if (userReports.length === 0) {
+                reportsList.innerHTML = '<p>Nenhum relatório encontrado.</p>';
+                return;
+            }
+            
+            userReports.forEach(report => {
+                const reportElement = document.createElement('div');
+                reportElement.className = 'report-item';
+                
+                // Determina o status do relatório
+                let status = 'completed';
+                let statusClass = 'status-completed';
+                let statusText = 'Entregue';
+                
+                if (!report.submitted) {
+                    status = 'late';
+                    statusClass = 'status-late';
+                    statusText = 'Atrasado';
+                } else if (report.submitted && new Date(report.submittedAt) > new Date(report.deadline)) {
+                    status = 'late';
+                    statusClass = 'status-late';
+                    statusText = 'Entregue com atraso';
+                }
+                
+                reportElement.innerHTML = `
+                    <div class="report-header">
+                        <h3>Relatório Semanal - ${formatDate(report.weekStart)} a ${formatDate(report.weekEnd)}</h3>
+                        <span class="report-status ${statusClass}">${statusText}</span>
+                    </div>
+                    ${report.submitted ? `
+                        <p><strong>Enviado em:</strong> ${formatDate(report.submittedAt)}</p>
+                        <p><strong>Conteúdo:</strong></p>
+                        <div style="background: #f5f5f5; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                            ${report.content.replace(/\n/g, '<br>')}
+                        </div>
+                    ` : `
+                        <p><strong>Status:</strong> Pendente</p>
+                        <p><strong>Prazo:</strong> ${formatDate(report.deadline)}</p>
+                    `}
+                `;
+                
+                reportsList.appendChild(reportElement);
+            });
+        }
+
+        // Enviar relatório
+        reportForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const weekInput = document.getElementById('reportWeek').value;
+            const content = document.getElementById('reportContent').value;
+            
+            if (!weekInput || !content) {
+                alert('Preencha todos os campos do relatório!');
+                return;
+            }
+            
+            // Calcula datas da semana
+            const year = parseInt(weekInput.substring(0, 4));
+            const weekNum = parseInt(weekInput.substring(6));
+            
+            const weekStart = getDateOfWeek(weekNum, year);
+            const weekEnd = new Date(weekStart);
+            weekEnd.setDate(weekStart.getDate() + 6);
+            
+            // Verifica se já existe um relatório para esta semana
+            const existingReportIndex = reports.findIndex(r => 
+                r.user === currentUser && 
+                new Date(r.weekStart).toISOString() === weekStart.toISOString()
+            );
+            
+            const now = new Date();
+            const reportData = {
+                id: Date.now(),
+                user: currentUser,
+                weekStart: weekStart.toISOString(),
+                weekEnd: weekEnd.toISOString(),
+                content: content,
+                submitted: true,
+                submittedAt: now.toISOString(),
+                deadline: calculateReportDeadline(weekEnd).toISOString()
+            };
+            
+            if (existingReportIndex !== -1) {
+                reports[existingReportIndex] = reportData;
+            } else {
+                reports.push(reportData);
+            }
+            
+            localStorage.setItem('heroncraft_reports', JSON.stringify(reports));
+            
+            // Limpar formulário
+            reportForm.reset();
+            
+            // Atualizar lista de relatórios
+            renderReports();
+            
+            alert('Relatório enviado com sucesso!');
+            
+            // Verificar se havia notificação de atraso para este relatório
+            if (isAdmin) {
+                checkLateReports();
+            }
+        });
+
+        // Calcular prazo do relatório (sexta-feira às 18:00 da semana seguinte)
+        function calculateReportDeadline(weekEnd) {
+            const deadline = new Date(weekEnd);
+            
+            // Configura o dia da semana (0=Domingo, 1=Segunda, etc.)
+            const deadlineDay = settings.reportDeadlineDay || 5; // Padrão: sexta-feira (5)
+            deadline.setDate(deadline.getDate() + (deadlineDay - deadline.getDay()));
+            
+            // Configura a hora
+            const [hours, minutes] = (settings.reportDeadlineHour || "18:00").split(':');
+            deadline.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+            
+            return deadline;
+        }
+
+        // Obter data de início da semana ISO
+        function getDateOfWeek(week, year) {
+            const date = new Date(year, 0, 1 + (week - 1) * 7);
+            const dayOfWeek = date.getDay();
+            const ISOdayOfWeek = dayOfWeek === 0 ? 6 : dayOfWeek - 1; // Segunda = 0, Domingo = 6
+            date.setDate(date.getDate() - ISOdayOfWeek);
+            return date;
+        }
+
+        // Verificar relatórios atrasados
+        function checkLateReports() {
+            if (!isAdmin) return;
+            
+            const now = new Date();
+            const lateReports = [];
+            
+            // Verifica todos os usuários
+            for (const username in users) {
+                if (users[username].isAdmin) continue; // Admins não precisam enviar relatórios
+                
+                // Encontra o último relatório esperado (semana passada)
+                const lastWeekEnd = new Date();
+                lastWeekEnd.setDate(lastWeekEnd.getDate() - (lastWeekEnd.getDay() + 1) % 7); // Domingo da semana passada
+                
+                const expectedReportWeekStart = new Date(lastWeekEnd);
+                expectedReportWeekStart.setDate(lastWeekEnd.getDate() - 6); // Segunda-feira da semana passada
+                
+                // Verifica se existe relatório para esta semana
+                const hasReport = reports.some(r => 
+                    r.user === username && 
+                    new Date(r.weekStart).toISOString() === expectedReportWeekStart.toISOString() && 
+                    r.submitted
+                );
+                
+                if (!hasReport) {
+                    // Verifica se já existe um relatório pendente no sistema
+                    const pendingReport = reports.find(r => 
+                        r.user === username && 
+                        new Date(r.weekStart).toISOString() === expectedReportWeekStart.toISOString() && 
+                        !r.submitted
+                    );
+                    
+                    if (!pendingReport) {
+                        // Cria um registro de relatório pendente
+                        const weekEnd = new Date(expectedReportWeekStart);
+                        weekEnd.setDate(expectedReportWeekStart.getDate() + 6);
+                        
+                        const newReport = {
+                            id: Date.now(),
+                            user: username,
+                            weekStart: expectedReportWeekStart.toISOString(),
+                            weekEnd: weekEnd.toISOString(),
+                            submitted: false,
+                            deadline: calculateReportDeadline(weekEnd).toISOString()
+                        };
+                        
+                        reports.push(newReport);
+                        localStorage.setItem('heroncraft_reports', JSON.stringify(reports));
+                    }
+                    
+                    // Verifica se o prazo já passou
+                    const deadline = new Date(pendingReport?.deadline || calculateReportDeadline(weekEnd).toISOString());
+                    
+                    if (now > deadline) {
+                        lateReports.push({
+                            user: username,
+                            weekStart: expectedReportWeekStart,
+                            deadline: deadline
+                        });
+                    }
+                }
+            }
+            
+            // Atualiza a lista de relatórios atrasados no painel de admin
+            renderLateReports(lateReports);
+            
+            // Cria notificações para os relatórios atrasados
+            if (lateReports.length > 0) {
+                const notification = {
+                    id: Date.now(),
+                    type: 'late_reports',
+                    title: 'Relatórios atrasados',
+                    message: `${lateReports.length} usuário(s) não enviaram relatório semanal`,
+                    recipient: currentUser,
+                    timestamp: now.toISOString(),
+                    read: false,
+                    lateReports: lateReports
+                };
+                
+                // Verifica se já existe notificação similar
+                const existingNotificationIndex = notifications.findIndex(n => 
+                    n.type === 'late_reports' && 
+                    new Date(n.timestamp).toDateString() === now.toDateString()
+                );
+                
+                if (existingNotificationIndex === -1) {
+                    notifications.push(notification);
+                    localStorage.setItem('heroncraft_notifications', JSON.stringify(notifications));
+                    
+                    // Mostra alerta para o admin
+                    if (currentUser === notification.recipient) {
+                        alert(`⚠️ ${lateReports.length} usuário(s) não enviaram relatório semanal!`);
+                        renderNotifications();
+                    }
+                }
+            }
+        }
+
+        // Renderizar relatórios atrasados no painel de admin
+        function renderLateReports(lateReports) {
+            lateReportsList.innerHTML = '';
+            
+            if (lateReports.length === 0) {
+                lateReportsList.innerHTML = '<p>Nenhum relatório atrasado no momento.</p>';
+                return;
+            }
+            
+            lateReports.forEach(report => {
+                const reportElement = document.createElement('div');
+                reportElement.className = 'report-item';
+                reportElement.innerHTML = `
+                    <h3>${report.user}</h3>
+                    <p>Semana: ${formatDate(report.weekStart)} a ${formatDate(new Date(report.weekStart).setDate(report.weekStart.getDate() + 6))}</p>
+                    <p>Prazo: ${formatDate(report.deadline)}</p>
+                    <p class="status-late" style="display: inline-block; padding: 3px 8px; border-radius: 3px;">Atrasado</p>
+                `;
+                lateReportsList.appendChild(reportElement);
+            });
+        }
+
+        // Salvar configurações de relatórios
+        saveReportSettings.addEventListener('click', () => {
+            settings.reportDeadlineDay = parseInt(reportDeadlineDay.value);
+            settings.reportDeadlineHour = reportDeadlineHour.value;
+            
+            localStorage.setItem('heroncraft_settings', JSON.stringify(settings));
+            
+            alert('Configurações salvas com sucesso!');
+            
+            // Recalcula prazos para todos os relatórios pendentes
+            reports.forEach(report => {
+                if (!report.submitted) {
+                    const weekEnd = new Date(report.weekEnd);
+                    report.deadline = calculateReportDeadline(weekEnd).toISOString();
+                }
+            });
+            
+            localStorage.setItem('heroncraft_reports', JSON.stringify(reports));
+        });
+
+        // Atualizar dashboard
+        function updateDashboard() {
+            const now = new Date();
+            const today = now.toISOString().split('T')[0];
+            const weekStart = new Date(now.setDate(now.getDate() - now.getDay()));
+            const weekEnd = new Date(weekStart);
+            weekEnd.setDate(weekStart.getDate() + 6);
+            
+            // Tarefas concluídas hoje
+            const dailyCompletedCount = tasks.filter(task => 
+                task.status === 'completed' && 
+                task.completedAt && 
+                task.completedAt.split('T')[0] === today
+            ).length;
+            
+            // Tarefas concluídas esta semana
+            const weeklyCompletedCount = tasks.filter(task => 
+                task.status === 'completed' && 
+                task.completedAt && 
+                new Date(task.completedAt) >= weekStart &&
+                new Date(task.completedAt) <= weekEnd
+            ).length;
+            
+            // Estatísticas gerais
+            const totalTasksCount = tasks.length;
+            const completedTasksCount = tasks.filter(task => task.status === 'completed').length;
+            const completionRateValue = totalTasksCount > 0 
+                ? Math.round((completedTasksCount / totalTasksCount) * 100) 
+                : 0;
+            
+            // Próximos prazos (ordenados por data mais próxima)
+            const upcoming = tasks
+                .filter(task => task.deadline && task.status === 'pending')
+                .sort((a, b) => new Date(a.deadline) - new Date(b.deadline))
+                .slice(0, 5);
+            
+            // Atualiza a UI
+            dailyCompleted.textContent = dailyCompletedCount;
+            dailyTarget.textContent = goals.daily;
+            dailyProgress.style.width = `${Math.min(100, (dailyCompletedCount / goals.daily) * 100)}%`;
+            
+            weeklyCompleted.textContent = weeklyCompletedCount;
+            weeklyTarget.textContent = goals.weekly;
+            weeklyProgress.style.width = `${Math.min(100, (weeklyCompletedCount / goals.weekly) * 100)}%`;
+            
+            totalTasks.textContent = totalTasksCount;
+            completedTasks.textContent = completedTasksCount;
+            completionRate.textContent = completionRateValue;
+            
+            upcomingDeadlines.innerHTML = '';
+            upcoming.forEach(task => {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${task.title}</strong> - ${formatDate(task.deadline)}`;
+                upcomingDeadlines.appendChild(li);
+            });
+        }
+
+        // Verificar prazos e criar notificações
+        function checkDeadlines() {
+            if (!currentUser) return;
+            
+            const now = new Date();
+            const soon = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 horas no futuro
+            
+            tasks.forEach(task => {
+                if (task.deadline && task.status === 'pending') {
+                    const deadline = new Date(task.deadline);
+                    
+                    // Notificar se o prazo está próximo (nas próximas 24 horas)
+                    if (deadline > now && deadline <= soon) {
+                        // Verifica se já existe notificação para este prazo
+                        const alreadyNotified = notifications.some(n => 
+                            n.type === 'deadline' && 
+                            n.taskId === task.id && 
+                            n.recipient === task.assignee
+                        );
+                        
+                        if (!alreadyNotified) {
+                            const notification = {
+                                id: Date.now(),
+                                type: 'deadline',
+                                taskId: task.id,
+                                title: `Prazo próximo: ${task.title}`,
+                                message: `A tarefa "${task.title}" vence em ${formatTimeRemaining(deadline)}`,
+                                recipient: task.assignee,
+                                timestamp: new Date().toISOString(),
+                                read: false
+                            };
+                            
+                            notifications.push(notification);
+                            
+                            // Mostrar alerta se for o usuário atual
+                            if (task.assignee === currentUser) {
+                                alert(`⚠️ Prazo próximo: "${task.title}" vence em ${formatTimeRemaining(deadline)}`);
+                            }
+                        }
+                    }
+                    
+                    // Notificar se o prazo passou
+                    if (deadline < now) {
+                        const alreadyNotified = notifications.some(n => 
+                            n.type === 'deadline_passed' && 
+                            n.taskId === task.id && 
+                            n.recipient === task.assignee
+                        );
+                        
+                        if (!alreadyNotified) {
+                            const notification = {
+                                id: Date.now(),
+                                type: 'deadline_passed',
+                                taskId: task.id,
+                                title: `Prazo vencido: ${task.title}`,
+                                message: `A tarefa "${task.title}" está atrasada!`,
+                                recipient: task.assignee,
+                                timestamp: new Date().toISOString(),
+                                read: false
+                            };
+                            
+                            notifications.push(notification);
+                            
+                            if (task.assignee === currentUser) {
+                                alert(`⏰ Prazo vencido: "${task.title}" está atrasada!`);
+                            }
+                        }
+                    }
+                }
+            });
+            
+            localStorage.setItem('heroncraft_notifications', JSON.stringify(notifications));
+        }
+
+        // Funções auxiliares
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            
+            const date = new Date(dateString);
+            return date.toLocaleDateString('pt-BR', {
                 day: '2-digit',
                 month: '2-digit',
                 year: 'numeric',
@@ -931,158 +1540,18 @@
                 minute: '2-digit'
             });
         }
-        
-        function getAllTasks() {
-            let allTasks = [];
-            for (const user in users) {
-                allTasks = allTasks.concat(users[user].tasks);
-            }
-            return allTasks;
-        }
-        
-        // Adicionar tarefa
-        taskForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const title = document.getElementById('taskTitle').value;
-            const assignee = document.getElementById('taskAssignee').value;
-            const description = document.getElementById('taskDescription').value;
-            
-            if (!title || !assignee) return;
-            
-            const newTask = {
-                id: generateId(),
-                title,
-                assignee,
-                description,
-                createdBy: currentUser,
-                date: new Date().toISOString()
-            };
-            
-            users[currentUser].tasks.push(newTask);
-            localStorage.setItem('heroncraft_users', JSON.stringify(users));
-            
-            if (analyticsEnabled) trackPageView('Nova Tarefa Criada');
-            
-            renderTasks();
-            taskForm.reset();
-            
-            // Efeito visual
-            const btn = taskForm.querySelector('button');
-            btn.textContent = 'TAREFA ADICIONADA!';
-            btn.style.background = 'linear-gradient(90deg, #ffffff, #ff0000)';
-            setTimeout(() => {
-                btn.textContent = 'ADICIONAR TAREFA';
-                btn.style.background = 'linear-gradient(90deg, #ff0000, #cc0000)';
-            }, 2000);
-        });
-        
-        // Renderizar tarefas
-        function renderTasks(view = 'all') {
-            if (!currentUser) return;
-            
-            let tasks = users[currentUser]?.tasks || [];
-            
-            // Se for a visualização do responsável, filtrar tarefas
-            if (view === 'assigned') {
-                tasks = getAllTasks().filter(task => task.assignee === currentUser);
-            }
-            
-            taskList.innerHTML = '';
-            
-            if (tasks.length === 0) {
-                taskList.innerHTML = `
-                    <li class="no-tasks">
-                        <i class="fas fa-tasks"></i>
-                        <p>Nenhuma tarefa encontrada</p>
-                        <p>${view === 'assigned' ? 'Nenhuma tarefa atribuída a você!' : 'Crie sua primeira tarefa!'}</p>
-                    </li>
-                `;
-                return;
-            }
-            
-            tasks.forEach(task => {
-                const taskElement = document.createElement('li');
-                taskElement.className = 'task-item';
-                taskElement.innerHTML = `
-                    <div class="task-header">
-                        <div class="task-title">${task.title}</div>
-                        <div class="task-date">${formatDate(task.date)}</div>
-                    </div>
-                    <div class="task-meta">
-                        <div class="task-creator"><i class="fas fa-user-edit"></i> Criado por: ${task.createdBy}</div>
-                        <div class="task-assignee"><i class="fas fa-user-check"></i> Responsável: ${task.assignee}</div>
-                    </div>
-                    <div class="task-description">${task.description || 'Sem descrição fornecida'}</div>
-                    ${task.createdBy === currentUser ? 
-                      `<div class="task-actions">
-                          <button class="btn btn-danger delete-btn" data-id="${task.id}"><i class="fas fa-trash-alt"></i> EXCLUIR</button>
-                      </div>` : ''}
-                `;
-                taskList.appendChild(taskElement);
-            });
-            
-            // Adicionar event listeners aos botões de exclusão
-            document.querySelectorAll('.delete-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const taskId = e.target.dataset.id;
-                    deleteTask(taskId);
-                });
-            });
-        }
-        
-        // Excluir tarefa
-        function deleteTask(taskId) {
-            if (confirm('Tem certeza que deseja excluir esta tarefa?')) {
-                users[currentUser].tasks = users[currentUser].tasks.filter(task => task.id !== taskId);
-                localStorage.setItem('heroncraft_users', JSON.stringify(users));
-                
-                if (analyticsEnabled) trackPageView('Tarefa Excluída');
-                
-                renderTasks();
-            }
-        }
-        
-        // Alternar entre visualizações
-        viewAllBtn.addEventListener('click', () => {
-            viewAllBtn.classList.add('active');
-            viewAssignedBtn.classList.remove('active');
-            renderTasks('all');
-        });
-        
-        viewAssignedBtn.addEventListener('click', () => {
-            viewAssignedBtn.classList.add('active');
-            viewAllBtn.classList.remove('active');
-            renderTasks('assigned');
-        });
 
-        // Inicializar o sistema
-        document.addEventListener('DOMContentLoaded', () => {
-            // Para fins de demonstração, vamos pré-carregar algumas tarefas
-            if (!users['admin'].tasks.length) {
-                users['admin'].tasks = [
-                    {
-                        id: 'task1',
-                        title: 'Revisar relatório mensal',
-                        assignee: 'usuario',
-                        description: 'Analisar os resultados financeiros do último mês e preparar relatório para diretoria',
-                        createdBy: 'admin',
-                        date: new Date(2023, 6, 15, 10, 30).toISOString()
-                    },
-                    {
-                        id: 'task2',
-                        title: 'Atualizar site corporativo',
-                        assignee: 'admin',
-                        description: 'Implementar as novas seções do site e corrigir problemas relatados',
-                        createdBy: 'admin',
-                        date: new Date(2023, 6, 16, 14, 15).toISOString()
-                    }
-                ];
-                localStorage.setItem('heroncraft_users', JSON.stringify(users));
-            }
-        });
-    </script>
-</body>
-</html>
+        function formatTimeRemaining(endDate) {
+            const now = new Date();
+            const diff = endDate - now;
+            
+            if (diff <= 0) return 'tempo esgotado';
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            
+            return `${hours}h ${minutes}m`;
+        }
     </script>
 </body>
 </html>
