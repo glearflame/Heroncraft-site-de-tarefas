@@ -25,7 +25,419 @@
             align-items: center;
         }
 
-        /* (Mantenha todos os estilos anteriores do seu CSS) */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 90vh;
+        }
+
+        /* Tela de Login */
+        .login-screen {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px 30px;
+            max-width: 500px;
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #eaeaea;
+        }
+
+        .login-screen::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #ff0000, #cc0000, #ff4d4d);
+        }
+
+        .login-title {
+            font-size: 2.2rem;
+            color: #ff0000;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .login-subtitle {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .form-group label {
+            color: #2c3e50;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group input {
+            padding: 15px;
+            border: 2px solid #e0e6ed;
+            background: #f8fafc;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            border-radius: 10px;
+            color: #2c3e50;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff0000;
+            box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
+            background: #fff;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 25px;
+            background: linear-gradient(90deg, #ff0000, #cc0000);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-danger {
+            background: linear-gradient(90deg, #ff0000, #cc0000);
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .switch-text {
+            margin-top: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .switch-text:hover {
+            color: #ff0000;
+            text-decoration: underline;
+        }
+
+        /* App Principal */
+        .app-container {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #eaeaea;
+        }
+
+        header {
+            text-align: center;
+            padding: 25px 30px;
+            margin-bottom: 0;
+            background: linear-gradient(90deg, #ff0000, #cc0000);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #ffffff, #ff0000);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .user-info span {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            display: flex;
+            gap: 25px;
+            padding: 30px;
+            margin-bottom: 0;
+            flex: 1;
+        }
+
+        .task-form {
+            flex: 1;
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0f0f0;
+        }
+
+        .task-form h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .task-form h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff0000, #cc0000);
+            border-radius: 2px;
+        }
+
+        .tasks-container {
+            flex: 2;
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0f0f0;
+        }
+
+        .tasks-container h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .tasks-container h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff0000, #cc0000);
+            border-radius: 2px;
+        }
+
+        .task-list {
+            list-style: none;
+            flex: 1;
+            overflow-y: auto;
+            max-height: 600px;
+            padding-right: 10px;
+        }
+
+        .task-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .task-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .task-list::-webkit-scrollbar-thumb {
+            background: #c3cfe2;
+            border-radius: 4px;
+        }
+
+        .task-list::-webkit-scrollbar-thumb:hover {
+            background: #a4b0be;
+        }
+
+        .task-item {
+            background: #fff;
+            border: 1px solid #e0e6ed;
+            border-left: 4px solid #ff0000;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            color: #2c3e50;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .task-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.07);
+            border-left: 4px solid #cc0000;
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e0e6ed;
+        }
+
+        .task-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            max-width: 70%;
+            word-break: break-word;
+        }
+
+        .task-date {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .task-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+
+        .task-creator, .task-assignee {
+            background: #f8fafc;
+            color: #ff0000;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid #e0e6ed;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .task-description {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            word-break: break-word;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            color: #555;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .no-tasks {
+            text-align: center;
+            padding: 40px;
+            color: #a4b0be;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .no-tasks i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #e0e6ed;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            background: #f8fafc;
+            border-top: 1px solid #eaeaea;
+        }
 
         /* Cookie Banner */
         #cookie-banner {
@@ -70,7 +482,7 @@
             cursor: pointer;
         }
 
-        /* Analytics Viewer (para admin) */
+        /* Analytics Viewer */
         #analyticsViewer {
             margin-top: 30px;
             padding: 20px;
@@ -93,6 +505,81 @@
             max-height: 300px;
             overflow-y: auto;
         }
+
+        .view-switcher {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        
+        .view-switcher button {
+            padding: 8px 16px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .view-switcher button.active {
+            background: #ff0000;
+            color: white;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .login-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .task-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .task-title {
+                max-width: 100%;
+            }
+            
+            .task-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .task-actions {
+                justify-content: center;
+            }
+            
+            #cookie-banner {
+                padding: 10px;
+            }
+            
+            #accept-cookies, #reject-cookies {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Animação de entrada */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-screen, .app-container {
+            animation: fadeIn 0.6s ease-out;
+        }
     </style>
 </head>
 <body>
@@ -104,17 +591,136 @@
     </div>
 
     <div class="container">
-        <!-- (Mantenha todo o HTML existente do seu sistema) -->
+        <!-- Tela de Login -->
+        <div class="login-screen" id="loginScreen">
+            <h1 class="login-title">Heroncraft Tasks</h1>
+            <p class="login-subtitle">Gerencie suas tarefas de forma eficiente</p>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user"></i> USUÁRIO</label>
+                    <input type="text" id="username" placeholder="Digite seu usuário..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> SENHA</label>
+                    <input type="password" id="password" placeholder="Digite sua senha..." required>
+                </div>
+                
+                <button type="submit" class="btn">ENTRAR</button>
+                
+                <p class="switch-text" id="showRegister">Criar nova conta</p>
+            </form>
+        </div>
+        
+        <!-- Tela de Registro -->
+        <div class="login-screen" id="registerScreen" style="display: none;">
+            <h1 class="login-title">CRIAR CONTA</h1>
+            <p class="login-subtitle">Comece a gerenciar suas tarefas hoje</p>
+            
+            <form class="login-form" id="registerForm">
+                <div class="form-group">
+                    <label for="newUsername"><i class="fas fa-user"></i> NOVO USUÁRIO</label>
+                    <input type="text" id="newUsername" placeholder="Crie um nome de usuário..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="newPassword"><i class="fas fa-lock"></i> NOVA SENHA</label>
+                    <input type="password" id="newPassword" placeholder="Crie uma senha..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword"><i class="fas fa-lock"></i> CONFIRMAR SENHA</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirme sua senha..." required>
+                </div>
+                
+                <button type="submit" class="btn">CRIAR CONTA</button>
+                
+                <p class="switch-text" id="showLogin">Voltar para login</p>
+            </form>
+        </div>
+        
+        <!-- Aplicativo Principal (mostrado após login) -->
+        <div class="app-container" id="appContainer">
+            <header>
+                <h1>Heroncraft Tasks</h1>
+                <p class="login-subtitle">Gerenciador de Tarefas Moderno</p>
+                
+                <div class="user-info">
+                    <div>Logado como: <span id="loggedUser"></span></div>
+                    <button class="btn logout-btn" id="logoutBtn">SAIR <i class="fas fa-sign-out-alt"></i></button>
+                </div>
+            </header>
+            
+            <div class="main-content">
+                <div class="task-form">
+                    <h2>CRIAR NOVA TAREFA</h2>
+                    <form id="taskForm">
+                        <div class="form-group">
+                            <label for="taskTitle"><i class="fas fa-heading"></i> TÍTULO</label>
+                            <input type="text" id="taskTitle" placeholder="Título da tarefa..." required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="taskAssignee"><i class="fas fa-user-friends"></i> RESPONSÁVEL</label>
+                            <input type="text" id="taskAssignee" placeholder="Atribuir a..." required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="taskDescription"><i class="fas fa-align-left"></i> DESCRIÇÃO</label>
+                            <textarea id="taskDescription" placeholder="Descrição detalhada da tarefa..." style="height: 120px; font-family: 'Montserrat', sans-serif; padding: 15px; border: 2px solid #e0e6ed; background: #f8fafc; border-radius: 10px; resize: vertical;"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">ADICIONAR TAREFA</button>
+                    </form>
+                </div>
+                
+                <div class="tasks-container">
+                    <h2>SUAS TAREFAS</h2>
+                    <div class="view-switcher">
+                        <button id="viewAllBtn" class="active">Todas Tarefas</button>
+                        <button id="viewAssignedBtn">Atribuídas a Mim</button>
+                    </div>
+                    <ul id="taskList" class="task-list">
+                        <!-- Tarefas serão inseridas aqui -->
+                    </ul>
+                </div>
+            </div>
+            
+            <footer>
+                <p>© 2023 Heroncraft Tasks - Gerencie suas tarefas com eficiência</p>
+                <p>Simplifique seu fluxo de trabalho e aumente sua produtividade</p>
+            </footer>
+        </div>
     </div>
 
     <script>
+        // Sistema de autenticação
+        const users = JSON.parse(localStorage.getItem('heroncraft_users')) || {
+            'admin': { password: 'admin123', tasks: [] },
+            'usuario': { password: 'senha123', tasks: [] }
+        };
+        
+        // Variável global para o usuário atual
+        let currentUser = null;
+        
+        // Elementos DOM
+        const loginScreen = document.getElementById('loginScreen');
+        const registerScreen = document.getElementById('registerScreen');
+        const appContainer = document.getElementById('appContainer');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const showRegister = document.getElementById('showRegister');
+        const showLogin = document.getElementById('showLogin');
+        const loggedUserSpan = document.getElementById('loggedUser');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const taskForm = document.getElementById('taskForm');
+        const taskList = document.getElementById('taskList');
+        const viewAllBtn = document.getElementById('viewAllBtn');
+        const viewAssignedBtn = document.getElementById('viewAssignedBtn');
+        
         // ================================================
-        // SISTEMA DE GERENCIAMENTO DE TAREFAS (EXISTENTE)
-        // ================================================
-        // (Mantenha todo o código JavaScript existente)
-
-        // ================================================
-        // SISTEMA DE ANALYTICS COM LGPD
+        // SISTEMA DE ANALYTICS
         // ================================================
         const analyticsEnabled = localStorage.getItem('cookies-accepted') === 'true';
         const userAnalytics = {
@@ -146,13 +752,8 @@
         }
 
         function initAnalytics() {
-            // Coletar informações do dispositivo
             collectDeviceInfo();
-            
-            // Registrar acesso à página atual
-            trackPageView();
-            
-            // Tentar obter localização aproximada
+            trackPageView('Página Inicial');
             getApproximateLocation();
         }
 
@@ -167,9 +768,11 @@
             };
         }
 
-        function trackPageView() {
+        function trackPageView(pageName) {
+            if (!analyticsEnabled) return;
+            
             userAnalytics.pageViews.push({
-                page: window.location.pathname,
+                page: pageName || window.location.pathname,
                 timestamp: new Date().toISOString()
             });
             
@@ -180,34 +783,52 @@
         }
 
         function getApproximateLocation() {
-            fetch('https://ipapi.co/json/')
-                .then(response => response.json())
+            if (!analyticsEnabled) return;
+            
+            // Primeiro tentamos uma API
+            fetch('https://ipwho.is/')
+                .then(response => {
+                    if (!response.ok) throw new Error('Falha na API primária');
+                    return response.json();
+                })
                 .then(data => {
                     userAnalytics.location = {
-                        country: data.country_name,
+                        country: data.country,
                         region: data.region,
                         city: data.city,
                         ip: data.ip
                     };
                 })
                 .catch(error => {
-                    console.log('Localização não disponível:', error);
+                    console.log('Usando API alternativa...', error);
+                    // Fallback para API secundária
+                    fetch('https://ipapi.co/json/')
+                        .then(response => response.json())
+                        .then(data => {
+                            userAnalytics.location = {
+                                country: data.country_name,
+                                region: data.region,
+                                city: data.city,
+                                ip: data.ip
+                            };
+                        })
+                        .catch(error => {
+                            console.log('Localização não disponível:', error);
+                            userAnalytics.location = {
+                                error: "Localização indisponível"
+                            };
+                        });
                 });
         }
 
-        // ================================================
-        // PAINEL DE ANALYTICS PARA ADMIN
-        // ================================================
         function setupAdminAnalyticsPanel() {
             if (currentUser === 'admin') {
                 const analyticsViewer = document.createElement('div');
                 analyticsViewer.id = 'analyticsViewer';
                 analyticsViewer.innerHTML = `
                     <h3>Relatório de Acesso</h3>
-                    <button id="viewAnalytics" class="btn" style="background: #ff0000;">
-                        Ver Dados Coletados
-                    </button>
-                    <div id="analyticsData"></div>
+                    <button id="viewAnalytics" class="btn">Ver Dados Coletados</button>
+                    <div id="analyticsData" style="display:none;"></div>
                 `;
                 document.querySelector('.main-content').appendChild(analyticsViewer);
                 
@@ -219,9 +840,249 @@
             }
         }
 
-        // Adicionar esta linha após o login bem-sucedido
-        // (Dentro do bloco if do login, após currentUser = username)
-        setupAdminAnalyticsPanel();
+        // ================================================
+        // SISTEMA DE TAREFAS
+        // ================================================
+        // Alternar entre login e registro
+        showRegister.addEventListener('click', () => {
+            loginScreen.style.display = 'none';
+            registerScreen.style.display = 'block';
+            if (analyticsEnabled) trackPageView('Tela de Registro');
+        });
+        
+        showLogin.addEventListener('click', () => {
+            registerScreen.style.display = 'none';
+            loginScreen.style.display = 'block';
+            if (analyticsEnabled) trackPageView('Tela de Login');
+        });
+        
+        // Login
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (users[username] && users[username].password === password) {
+                currentUser = username;
+                loggedUserSpan.textContent = currentUser;
+                loginScreen.style.display = 'none';
+                appContainer.style.display = 'flex';
+                
+                if (analyticsEnabled) {
+                    trackPageView('Login');
+                    collectDeviceInfo();
+                }
+                
+                renderTasks();
+                setupAdminAnalyticsPanel();
+            } else {
+                alert('Usuário ou senha incorretos!');
+            }
+        });
+        
+        // Registro
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const newUsername = document.getElementById('newUsername').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (users[newUsername]) {
+                alert('Este usuário já existe!');
+                return;
+            }
+            
+            if (newPassword !== confirmPassword) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+            
+            users[newUsername] = { password: newPassword, tasks: [] };
+            localStorage.setItem('heroncraft_users', JSON.stringify(users));
+            
+            if (analyticsEnabled) trackPageView('Registro de Novo Usuário');
+            
+            alert('Conta criada com sucesso! Faça login para continuar.');
+            registerScreen.style.display = 'none';
+            loginScreen.style.display = 'block';
+        });
+        
+        // Logout
+        logoutBtn.addEventListener('click', () => {
+            if (analyticsEnabled) trackPageView('Logout');
+            currentUser = null;
+            appContainer.style.display = 'none';
+            loginScreen.style.display = 'block';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        });
+        
+        // Funções para gerenciamento de tarefas
+        function generateId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+        
+        function formatDate(date) {
+            return new Date(date).toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+        
+        function getAllTasks() {
+            let allTasks = [];
+            for (const user in users) {
+                allTasks = allTasks.concat(users[user].tasks);
+            }
+            return allTasks;
+        }
+        
+        // Adicionar tarefa
+        taskForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('taskTitle').value;
+            const assignee = document.getElementById('taskAssignee').value;
+            const description = document.getElementById('taskDescription').value;
+            
+            if (!title || !assignee) return;
+            
+            const newTask = {
+                id: generateId(),
+                title,
+                assignee,
+                description,
+                createdBy: currentUser,
+                date: new Date().toISOString()
+            };
+            
+            users[currentUser].tasks.push(newTask);
+            localStorage.setItem('heroncraft_users', JSON.stringify(users));
+            
+            if (analyticsEnabled) trackPageView('Nova Tarefa Criada');
+            
+            renderTasks();
+            taskForm.reset();
+            
+            // Efeito visual
+            const btn = taskForm.querySelector('button');
+            btn.textContent = 'TAREFA ADICIONADA!';
+            btn.style.background = 'linear-gradient(90deg, #ffffff, #ff0000)';
+            setTimeout(() => {
+                btn.textContent = 'ADICIONAR TAREFA';
+                btn.style.background = 'linear-gradient(90deg, #ff0000, #cc0000)';
+            }, 2000);
+        });
+        
+        // Renderizar tarefas
+        function renderTasks(view = 'all') {
+            if (!currentUser) return;
+            
+            let tasks = users[currentUser]?.tasks || [];
+            
+            // Se for a visualização do responsável, filtrar tarefas
+            if (view === 'assigned') {
+                tasks = getAllTasks().filter(task => task.assignee === currentUser);
+            }
+            
+            taskList.innerHTML = '';
+            
+            if (tasks.length === 0) {
+                taskList.innerHTML = `
+                    <li class="no-tasks">
+                        <i class="fas fa-tasks"></i>
+                        <p>Nenhuma tarefa encontrada</p>
+                        <p>${view === 'assigned' ? 'Nenhuma tarefa atribuída a você!' : 'Crie sua primeira tarefa!'}</p>
+                    </li>
+                `;
+                return;
+            }
+            
+            tasks.forEach(task => {
+                const taskElement = document.createElement('li');
+                taskElement.className = 'task-item';
+                taskElement.innerHTML = `
+                    <div class="task-header">
+                        <div class="task-title">${task.title}</div>
+                        <div class="task-date">${formatDate(task.date)}</div>
+                    </div>
+                    <div class="task-meta">
+                        <div class="task-creator"><i class="fas fa-user-edit"></i> Criado por: ${task.createdBy}</div>
+                        <div class="task-assignee"><i class="fas fa-user-check"></i> Responsável: ${task.assignee}</div>
+                    </div>
+                    <div class="task-description">${task.description || 'Sem descrição fornecida'}</div>
+                    ${task.createdBy === currentUser ? 
+                      `<div class="task-actions">
+                          <button class="btn btn-danger delete-btn" data-id="${task.id}"><i class="fas fa-trash-alt"></i> EXCLUIR</button>
+                      </div>` : ''}
+                `;
+                taskList.appendChild(taskElement);
+            });
+            
+            // Adicionar event listeners aos botões de exclusão
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const taskId = e.target.dataset.id;
+                    deleteTask(taskId);
+                });
+            });
+        }
+        
+        // Excluir tarefa
+        function deleteTask(taskId) {
+            if (confirm('Tem certeza que deseja excluir esta tarefa?')) {
+                users[currentUser].tasks = users[currentUser].tasks.filter(task => task.id !== taskId);
+                localStorage.setItem('heroncraft_users', JSON.stringify(users));
+                
+                if (analyticsEnabled) trackPageView('Tarefa Excluída');
+                
+                renderTasks();
+            }
+        }
+        
+        // Alternar entre visualizações
+        viewAllBtn.addEventListener('click', () => {
+            viewAllBtn.classList.add('active');
+            viewAssignedBtn.classList.remove('active');
+            renderTasks('all');
+        });
+        
+        viewAssignedBtn.addEventListener('click', () => {
+            viewAssignedBtn.classList.add('active');
+            viewAllBtn.classList.remove('active');
+            renderTasks('assigned');
+        });
+
+        // Inicializar o sistema
+        document.addEventListener('DOMContentLoaded', () => {
+            // Para fins de demonstração, vamos pré-carregar algumas tarefas
+            if (!users['admin'].tasks.length) {
+                users['admin'].tasks = [
+                    {
+                        id: 'task1',
+                        title: 'Revisar relatório mensal',
+                        assignee: 'usuario',
+                        description: 'Analisar os resultados financeiros do último mês e preparar relatório para diretoria',
+                        createdBy: 'admin',
+                        date: new Date(2023, 6, 15, 10, 30).toISOString()
+                    },
+                    {
+                        id: 'task2',
+                        title: 'Atualizar site corporativo',
+                        assignee: 'admin',
+                        description: 'Implementar as novas seções do site e corrigir problemas relatados',
+                        createdBy: 'admin',
+                        date: new Date(2023, 6, 16, 14, 15).toISOString()
+                    }
+                ];
+                localStorage.setItem('heroncraft_users', JSON.stringify(users));
+            }
+        });
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
